@@ -1,0 +1,625 @@
+
+gh diff --git a/.cursor/CloudKitSync.swift b/.cursor/CloudKitSync.swift
+new file mode 100644
+index 0000000..8b13789
+--- /dev/null
++++ b/.cursor/CloudKitSync.swift
+@@ -0,0 +1 @@
++
+diff --git a/.cursor/Lmlm.py b/.cursor/Lmlm.py
+new file mode 100644
+index 0000000..8b13789
+--- /dev/null
++++ b/.cursor/Lmlm.py
+@@ -0,0 +1 @@
++
+diff --git a/.github/workflows/nodejs.yaml b/.github/workflows/nodejs.yaml
+new file mode 100644
+index 0000000..1e4e141
+--- /dev/null
++++ b/.github/workflows/nodejs.yaml
+@@ -0,0 +1,31 @@
++# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
++# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
++
++name: Node.js CI
++
++on:
++  push:
++    branches: [ "main" ]
++  pull_request:
++    branches: [ "main" ]
++
++jobs:
++  build:
++
++    runs-on: ubuntu-latest
++
++    strategy:
++      matrix:
++        node-version: [22]
++        #See supported Node.js release schedule at https://nodejs.org/en/about/releases/
++
++    steps:
++    - uses: actions/checkout@v6
++    - name: Use Node.js ${{ matrix.node-version }}
++      uses: actions/setup-node@v4
++      with:
++        node-version: ${{ matrix.node-version }}
++        cache: 'npm' 'npx'
++    - run: npm ci
++    - run: npm run build --if-present
++    - run: npm test
+diff --git a/aos.spec.js b/Aos/Config.spec.js
+similarity index 100%
+rename from aos.spec.js
+rename to Aos/Config.spec.js
+diff --git a/about.html b/about.html
+deleted file mode 100644
+index ecf2ab4..0000000
+--- a/about.html
++++ /dev/null
+@@ -1 +0,0 @@
+-<!-- About page placeholder -->
+\ No newline at end of file
+diff --git a/blog.html b/blog.html
+deleted file mode 100644
+index 84f5788..0000000
+--- a/blog.html
++++ /dev/null
+@@ -1 +0,0 @@
+-<!-- Blog page placeholder -->
+\ No newline at end of file
+diff --git a/characters.html b/characters.html
+deleted file mode 100644
+index adbe1c8..0000000
+--- a/characters.html
++++ /dev/null
+@@ -1 +0,0 @@
+-<!-- Characters page placeholder -->
+\ No newline at end of file
+diff --git a/contact.html b/contact.html
+deleted file mode 100644
+index 6eb20f6..0000000
+--- a/contact.html
++++ /dev/null
+@@ -1 +0,0 @@
+-<!-- Contact page placeholder -->
+\ No newline at end of file
+diff --git a/docs/contact.html b/docs/contact.html
+new file mode 100644
+index 0000000..b3efa73
+--- /dev/null
++++ b/docs/contact.html
+@@ -0,0 +1 @@
++<!-- Contact page placeholder -->
+diff --git a/features.html b/features.html
+deleted file mode 100644
+index 4d7f152..0000000
+--- a/features.html
++++ /dev/null
+@@ -1 +0,0 @@
+-<!-- Features page placeholder -->
+\ No newline at end of file
+diff --git a/calculateOffset.spec.js b/helper/calculateOffset.spec.js
+similarity index 100%
+rename from calculateOffset.spec.js
+rename to helper/calculateOffset.spec.js
+diff --git a/index.html b/index.html
+index 2af1202..423743a 100644
+--- a/index.html
++++ b/index.html
+@@ -2,195 +2,29 @@
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+-  <title>Fluukpe – AI, Web & Blockchain Innovation</title>
+-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
++  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
++  <title>Offline - Fluukpe</title>
+   <style>
+-    * {
+-      margin: 0;
+-      padding: 0;
+-      box-sizing: border-box;
+-      font-family: "Poppins", sans-serif;
+-    }
+-
+     body {
+-      background: linear-gradient(145deg, #040018, #0b0038, #16005c);
+-      color: #fff;
++      margin: 0;
++      height: 100vh;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: center;
+-      height: 100vh;
+-      overflow: hidden;
+-    }
+-
+-    header {
+-      position: absolute;
+-      top: 20px;
+-      left: 40px;
+-      font-weight: 600;
+-      letter-spacing: 1px;
+-    }
+-
+-    .logo {
+-      width: 160px;
+-      height: 160px;
+-      margin-bottom: 20px;
+-      animation: pulse 3s infinite ease-in-out;
+-    }
+-
+-    @keyframes pulse {
+-      0%, 100% { transform: scale(1); opacity: 1; }
+-      50% { transform: scale(1.1); opacity: 0.9; }
+-    }
+-
+-    h1 {
+-      font-size: 2.8rem;
+-      font-weight: 800;
+-      background: linear-gradient(90deg, #00ffe1, #9d4edd);
+-      -webkit-background-clip: text;
+-      -webkit-text-fill-color: transparent;
+-      margin-bottom: 15px;
+-    }
+-
+-    p {
+-      max-width: 700px;
++      background: #0a0f24;
++      color: #ccc;
++      font-family: 'Inter', sans-serif;
+       text-align: center;
+-      font-size: 1.1rem;
+-      opacity: 0.9;
+-      line-height: 1.6;
+-      margin-bottom: 30px;
+-    }
+-
+-    .btn-container {
+-      display: flex;
+-      gap: 20px;
+     }
+-
+-    .btn {
+-      padding: 12px 30px;
+-      border-radius: 25px;
+-      font-weight: 600;
+-      text-decoration: none;
+-      transition: 0.3s;
+-      border: 2px solid transparent;
+-    }
+-
+-    .btn.primary {
+-      background: linear-gradient(90deg, #00ffe1, #9d4edd);
+-      color: #fff;
+-    }
+-
+-    .btn.primary:hover {
+-      background: transparent;
+-      border-color: #9d4edd;
+-    }
+-
+-    .btn.secondary {
+-      background: transparent;
+-      border: 2px solid #00ffe1;
+-      color: #00ffe1;
+-    }
+-
+-    .btn.secondary:hover {
+-      background: #00ffe1;
+-      color: #0a001f;
+-    }
+-
+-    footer {
+-      position: absolute;
+-      bottom: 20px;
+-      text-align: center;
+-      font-size: 0.9rem;
+-      opacity: 0.6;
+-    }
+-
+-    canvas {
+-      position: absolute;
+-      top: 0;
+-      left: 0;
+-      width: 100%;
+-      height: 100%;
+-      z-index: -1;
++    h1 {
++      color: #00e0ff;
++      margin-bottom: 20px;
+     }
+   </style>
+ </head>
+ <body>
+-  <canvas id="bg"></canvas>
+-  <header>Fluukpe Project</header>
+-
+-  <img src="logo.png" alt="Fluukpe Logo" class="logo" />
+-
+-  <h1>Fluukpe</h1>
+-  <p>
+-    Where intelligence meets creation — Fluukpe is a next-gen platform blending AI,
+-    web technologies, and blockchain to redefine how humans and machines interact.
+-    Designed by <b>Seriki Yakub (KUBU LEE)</b>, it embodies innovation, creativity, and the power of automation.
+-  </p>
+-
+-  <div class="btn-container">
+-    <a href="https://github.com/Web4application/fluukpe" target="_blank" class="btn primary">Explore on GitHub</a>
+-    <a href="#get-started" class="btn secondary">Get Started</a>
+-  </div>
+-
+-  <footer>© 2025 Fluukpe by Web4Application | All Rights Reserved</footer>
+-
+-  <script>
+-    // Simple animated background particles (Flutter.js placeholder visual)
+-    const canvas = document.getElementById('bg');
+-    const ctx = canvas.getContext('2d');
+-    let particles = [];
+-
+-    function resize() {
+-      canvas.width = window.innerWidth;
+-      canvas.height = window.innerHeight;
+-    }
+-    window.addEventListener('resize', resize);
+-    resize();
+-
+-    class Particle {
+-      constructor() {
+-        this.x = Math.random() * canvas.width;
+-        this.y = Math.random() * canvas.height;
+-        this.size = Math.random() * 3;
+-        this.speedX = (Math.random() - 0.5) * 2;
+-        this.speedY = (Math.random() - 0.5) * 2;
+-        this.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
+-      }
+-
+-      update() {
+-        this.x += this.speedX;
+-        this.y += this.speedY;
+-
+-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+-      }
+-
+-      draw() {
+-        ctx.beginPath();
+-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+-        ctx.fillStyle = this.color;
+-        ctx.fill();
+-      }
+-    }
+-
+-    function init() {
+-      for (let i = 0; i < 80; i++) {
+-        particles.push(new Particle());
+-      }
+-    }
+-
+-    function animate() {
+-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+-      particles.forEach(p => {
+-        p.update();
+-        p.draw();
+-      });
+-      requestAnimationFrame(animate);
+-    }
+-
+-    init();
+-    animate();
+-  </script>
++  <h1>You're offline</h1>
++  <p>Fluukpe can’t connect right now.<br>Reconnect and try again.</p>
+ </body>
+ </html>
+diff --git a/modules/models/SessionSideInputJoinModel.java b/modules/models/SessionSideInputJoinModel.java
+new file mode 100644
+index 0000000..8b13789
+--- /dev/null
++++ b/modules/models/SessionSideInputJoinModel.java
+@@ -0,0 +1 @@
++
+diff --git a/offlin.html b/offlin.html
+deleted file mode 100644
+index 423743a..0000000
+--- a/offlin.html
++++ /dev/null
+@@ -1,30 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="en">
+-<head>
+-  <meta charset="UTF-8" />
+-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+-  <title>Offline - Fluukpe</title>
+-  <style>
+-    body {
+-      margin: 0;
+-      height: 100vh;
+-      display: flex;
+-      flex-direction: column;
+-      align-items: center;
+-      justify-content: center;
+-      background: #0a0f24;
+-      color: #ccc;
+-      font-family: 'Inter', sans-serif;
+-      text-align: center;
+-    }
+-    h1 {
+-      color: #00e0ff;
+-      margin-bottom: 20px;
+-    }
+-  </style>
+-</head>
+-<body>
+-  <h1>You're offline</h1>
+-  <p>Fluukpe can’t connect right now.<br>Reconnect and try again.</p>
+-</body>
+-</html>
+diff --git a/src/Models/TemplateModel.php b/src/Models/TemplateModel.php
+new file mode 100644
+index 0000000..8b13789
+--- /dev/null
++++ b/src/Models/TemplateModel.php
+@@ -0,0 +1 @@
++
+diff --git a/src/models/Query9Model.java b/src/models/Query9Model.java
+new file mode 100644
+index 0000000..8b13789
+--- /dev/null
++++ b/src/models/Query9Model.java
+@@ -0,0 +1 @@
++
+diff --git a/tools.html b/tools.html
+deleted file mode 100644
+index 1f96424..0000000
+--- a/tools.html
++++ /dev/null
+@@ -1 +0,0 @@
+-<!-- Tools page placeholder -->
+\ No newline at end of file
+diff --git a/observer.js b/tools/observer.js
+similarity index 100%
+rename from observer.js
+rename to tools/observer.js
+diff --git a/web/about.html b/web/about.html
+new file mode 100644
+index 0000000..54a5153
+--- /dev/null
++++ b/web/about.html
+@@ -0,0 +1 @@
++<!-- About page placeholder -->
+diff --git a/web/blog.html b/web/blog.html
+new file mode 100644
+index 0000000..b002f0b
+--- /dev/null
++++ b/web/blog.html
+@@ -0,0 +1 @@
++<!-- Blog page placeholder -->
+diff --git a/web/features.html b/web/features.html
+new file mode 100644
+index 0000000..9738d7e
+--- /dev/null
++++ b/web/features.html
+@@ -0,0 +1 @@
++<!-- Features page placeholder -->
+diff --git a/web/models/characters.html b/web/models/characters.html
+new file mode 100644
+index 0000000..79c980a
+--- /dev/null
++++ b/web/models/characters.html
+@@ -0,0 +1 @@
++<!-- Characters page placeholder -->
+diff --git a/web/src/index.html b/web/src/index.html
+new file mode 100644
+index 0000000..aca4e6d
+--- /dev/null
++++ b/web/src/index.html
+@@ -0,0 +1,196 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8" />
++  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++  <title>Fluukpe – AI, Web4 & Blockchain Innovation</title>
++  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
++  <style>
++    * {
++      margin: 0;
++      padding: 0;
++      box-sizing: border-box;
++      font-family: "Poppins", sans-serif;
++    }
++
++    body {
++      background: linear-gradient(145deg, #040018, #0b0038, #16005c);
++      color: #fff;
++      display: flex;
++      flex-direction: column;
++      align-items: center;
++      justify-content: center;
++      height: 100vh;
++      overflow: hidden;
++    }
++
++    header {
++      position: absolute;
++      top: 20px;
++      left: 40px;
++      font-weight: 600;
++      letter-spacing: 1px;
++    }
++
++    .logo {
++      width: 160px;
++      height: 160px;
++      margin-bottom: 20px;
++      animation: pulse 3s infinite ease-in-out;
++    }
++
++    @keyframes pulse {
++      0%, 100% { transform: scale(1); opacity: 1; }
++      50% { transform: scale(1.1); opacity: 0.9; }
++    }
++
++    h1 {
++      font-size: 2.8rem;
++      font-weight: 800;
++      background: linear-gradient(90deg, #00ffe1, #9d4edd);
++      -webkit-background-clip: text;
++      -webkit-text-fill-color: transparent;
++      margin-bottom: 15px;
++    }
++
++    p {
++      max-width: 700px;
++      text-align: center;
++      font-size: 1.1rem;
++      opacity: 0.9;
++      line-height: 1.6;
++      margin-bottom: 30px;
++    }
++
++    .btn-container {
++      display: flex;
++      gap: 20px;
++    }
++
++    .btn {
++      padding: 12px 30px;
++      border-radius: 25px;
++      font-weight: 600;
++      text-decoration: none;
++      transition: 0.3s;
++      border: 2px solid transparent;
++    }
++
++    .btn.primary {
++      background: linear-gradient(90deg, #00ffe1, #9d4edd);
++      color: #fff;
++    }
++
++    .btn.primary:hover {
++      background: transparent;
++      border-color: #9d4edd;
++    }
++
++    .btn.secondary {
++      background: transparent;
++      border: 2px solid #00ffe1;
++      color: #00ffe1;
++    }
++
++    .btn.secondary:hover {
++      background: #00ffe1;
++      color: #0a001f;
++    }
++
++    footer {
++      position: absolute;
++      bottom: 20px;
++      text-align: center;
++      font-size: 0.9rem;
++      opacity: 0.6;
++    }
++
++    canvas {
++      position: absolute;
++      top: 0;
++      left: 0;
++      width: 100%;
++      height: 100%;
++      z-index: -1;
++    }
++  </style>
++</head>
++<body>
++  <canvas id="bg"></canvas>
++  <header>Fluukpe Project</header>
++
++  <img src="logo.png" alt="Fluukpe Logo" class="logo" />
++
++  <h1>Fluukpe</h1>
++  <p>
++    Where intelligence meets creation — Fluukpe is a next-gen platform blending AI,
++    web technologies, and blockchain to redefine how humans and machines interact.
++    Designed by <b>Seriki Yakub (KUBU LEE)</b>, it embodies innovation, creativity, and the power of automation.
++  </p>
++
++  <div class="btn-container">
++    <a href="https://github.com/auraecosystem/fluukpe.git" target="_blank" class="btn primary">Explore on GitHub</a>
++    <a href="#get-started" class="btn secondary">Get Started</a>
++  </div>
++
++  <footer>© 2026 Fluukpe by Web4Application | All Rights Reserved</footer>
++
++  <script>
++    // Simple animated background particles (Flutter.js placeholder visual)
++    const canvas = document.getElementById('bg');
++    const ctx = canvas.getContext('2d');
++    let particles = [];
++
++    function resize() {
++      canvas.width = window.innerWidth;
++      canvas.height = window.innerHeight;
++    }
++    window.addEventListener('resize', resize);
++    resize();
++
++    class Particle {
++      constructor() {
++        this.x = Math.random() * canvas.width;
++        this.y = Math.random() * canvas.height;
++        this.size = Math.random() * 3;
++        this.speedX = (Math.random() - 0.5) * 2;
++        this.speedY = (Math.random() - 0.5) * 2;
++        this.color = `hsl(${Math.random() * 360}, 100%, 70%)`;
++      }
++
++      update() {
++        this.x += this.speedX;
++        this.y += this.speedY;
++
++        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
++        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
++      }
++
++      draw() {
++        ctx.beginPath();
++        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
++        ctx.fillStyle = this.color;
++        ctx.fill();
++      }
++    }
++
++    function init() {
++      for (let i = 0; i < 80; i++) {
++        particles.push(new Particle());
++      }
++    }
++
++    function animate() {
++      ctx.clearRect(0, 0, canvas.width, canvas.height);
++      particles.forEach(p => {
++        p.update();
++        p.draw();
++      });
++      requestAnimationFrame(animate);
++    }
++
++    init();
++    animate();
++  </script>
++</body>
++</html>
+diff --git a/web/tools.html b/web/tools.html
+new file mode 100644
+index 0000000..198b249
+--- /dev/null
++++ b/web/tools.html
+@@ -0,0 +1 @@
++<!-- Tools page placeholder -->
